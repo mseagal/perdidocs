@@ -77,6 +77,7 @@ public class buscarDocumentos extends JFrame implements ActionListener, ItemList
         boxTipo.addItem("TI");
         boxTipo.addItem("CC");
         boxTipo.addItem("CE");
+        boxTipo.setForeground(new Color(0,0,0));
         boxTipo.addItemListener(this);
         
         labelDocumento = new JLabel("Numero de documento");
@@ -142,7 +143,11 @@ public class buscarDocumentos extends JFrame implements ActionListener, ItemList
             } catch (SQLException ex) {
                 
             }
-            
+            ventanaConfirmacionBusqueda venConbus = new ventanaConfirmacionBusqueda();
+            venConbus.setBounds(0, 0, 262, 415);
+            venConbus.setVisible(true);
+            venConbus.setResizable(false);
+            venConbus.setLocationRelativeTo(null);
             
            
             
@@ -157,21 +162,17 @@ public class buscarDocumentos extends JFrame implements ActionListener, ItemList
             
         Connection con=DriverManager.getConnection(url,"root","");
         Statement sta=con.createStatement();
-        String sql="select * from documento where numero='"+NumDocumento+"' and codigo_tipo_doc="+TipoDoc+"";
+        String sql="select * from documento where numero='"+NumDocumento+"' and tipo_tipo_doc="+TipoDoc+"";
+        
         ResultSet resultado=sta.executeQuery(sql);
         
+        
         while(resultado.next()){
-            
+           
             NumTelefono=resultado.getString("contacto");
-            
-            ventanaConfirmacionBusqueda venConbus = new ventanaConfirmacionBusqueda();
-            venConbus.setBounds(0, 0, 262, 415);
-            venConbus.setVisible(true);
-            venConbus.setResizable(false);
-            venConbus.setLocationRelativeTo(null);
-            
-            
+              
         }
+        
         
         
         

@@ -23,13 +23,14 @@ public class ventanaConfirmacionEncontre extends JFrame implements ActionListene
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("Confirmacion Encontre Documentos");
         getContentPane().setBackground(new Color(51,102,230));
-        String Telefono = bd.gettel();
+        
         buscarDocumentos texTel = new buscarDocumentos();
         //Telefono = texTel.NumTelefono;
-        System.out.println(Telefono);
+        
         
         encontreDoc ed = new encontreDoc();
         String Numero=ed.NumDoc;
+        String Telefono = ed.NumTel;
         
         ImageIcon ImagenCara = new ImageIcon("src/recursos/Carita_1.png");
         carita = new JLabel(ImagenCara);
@@ -69,6 +70,7 @@ public class ventanaConfirmacionEncontre extends JFrame implements ActionListene
             ventanainicio.setVisible(true);
             ventanainicio.setResizable(false);
             ventanainicio.setLocationRelativeTo(null);
+            this.setVisible(false);
         }
     }
     public static void main (String args[]){

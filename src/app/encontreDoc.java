@@ -8,10 +8,17 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class encontreDoc extends JFrame implements ActionListener, ItemListener {
+
+    private static void JOptionPane(String los_datos_se_insertaron_correctamente_en_) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     private JLabel labelCarita, labelTipo, labelNumCC, labelNumTel;
     private JComboBox boxTipo;
     private JButton botonRegistrar, botonAtras;
@@ -21,6 +28,15 @@ public class encontreDoc extends JFrame implements ActionListener, ItemListener 
     public static String NumTel = "";
     public static String Seleccion = "";
     public static int TipoDoc;
+    public static String fecha="";
+    
+    
+    
+    
+    
+ 
+    
+    
             
     public encontreDoc(){
         setLayout (null);
@@ -135,12 +151,7 @@ public class encontreDoc extends JFrame implements ActionListener, ItemListener 
         if (EventoClic1.getSource()== botonRegistrar){
             NumDoc = boxDocumento.getText().trim();
             NumTel = boxTelefono.getText().trim();
-            ventanaConfirmacionEncontre venConEn = new ventanaConfirmacionEncontre();
-            venConEn.setBounds(0, 0, 262, 415);
-            venConEn.setVisible(true);
-            venConEn.setResizable(false);
-            venConEn.setLocationRelativeTo(null);
-            this.setVisible(false);
+            
             try {
                 conexionBD();
             } catch (SQLException ex) {
@@ -161,22 +172,28 @@ public class encontreDoc extends JFrame implements ActionListener, ItemListener 
     String driver="org.git.mm.mysql.Driver";
     String url="jdbc:mysql://localhost/perdidocs";
     
+    
     try{
     Connection con=DriverManager.getConnection(url,"root","");
     Statement sta=con.createStatement();
-    String sql1="insert into documento(codigo_tipo_doc,numero,fecha_expiracion,contacto) values("+TipoDoc+",'"+NumDoc+"','2018/11/3','"+NumTel+"')";
+    String sql1="insert into documento(tipo_tipo_doc,numero,contacto,fecha) values("+TipoDoc+",'"+NumDoc+"','"+NumTel+"','"+fecha+"')";
     
     boolean res=sta.execute(sql1);
     if (res==false){
-        System.out.println("Los datos se insertaron correctamente en la BD");
+        
+        ventanaConfirmacionEncontre venConEn = new ventanaConfirmacionEncontre();
+            venConEn.setBounds(0, 0, 262, 415);
+            venConEn.setVisible(true);
+            venConEn.setResizable(false);
+            venConEn.setLocationRelativeTo(null);
     }else{
-        System.out.println("Los datos no se insertaron correctamente en la BD");
+        JOptionPane.showMessageDialog(null,"Los datos no se insertaron correctamente en la BD");
     }
         
     
     } 
     catch(SQLException ex){
-        System.out.println("Error de conexion"+ex);
+        JOptionPane.showMessageDialog(null,"Error de conexion. Revise los datos");
         
     }
     
@@ -186,7 +203,15 @@ public class encontreDoc extends JFrame implements ActionListener, ItemListener 
         ventanaEncontreDocs.setBounds(0, 0, 262, 415);
         ventanaEncontreDocs.setVisible(true);
         ventanaEncontreDocs.setResizable(false);
-        ventanaEncontreDocs.setLocationRelativeTo(null);   
+        ventanaEncontreDocs.setLocationRelativeTo(null); 
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        Date date=new Date();
+        String fc=dateFormat.format(date);
+        fecha=fc;
+        
+        
+        
+        
     }   
 
     

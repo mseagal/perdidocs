@@ -69,6 +69,7 @@ public class ventanaConfirmacionBusqueda extends JFrame implements ActionListene
             ventanainicio.setVisible(true);
             ventanainicio.setResizable(false);
             ventanainicio.setLocationRelativeTo(null);
+            this.setVisible(false);
             
         }
     }
