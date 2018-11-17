@@ -31,8 +31,10 @@ public class ventanaConfirmacionBusqueda extends JFrame implements ActionListene
         setTitle("Confirmacion de busqueda");
         getContentPane().setBackground(new Color(51,102,230));
         
-        buscarDocumentos tel = new buscarDocumentos();
-        Telefono=tel.NumTelefono;
+        buscarDocumentos pantBus = new buscarDocumentos();
+        Telefono=pantBus.NumTelefono;
+        tipoSeleccion=pantBus.TipoDocBD;
+        Numero=pantBus.NumDocumento;
         
         ImageIcon ImagenCara = new ImageIcon("src/recursos/Carita_1.png");
         carita = new JLabel(ImagenCara);

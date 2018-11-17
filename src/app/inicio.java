@@ -70,7 +70,7 @@ public class inicio extends JFrame implements ActionListener{
         pantallaRegistros panReg = new pantallaRegistros();
         panReg.setBounds(0,0,262,415);
         panReg.setVisible(true);
-        panReg.setResizable(false);
+        panReg.setResizable(true);
         panReg.setLocation(10,10);
     }    
     

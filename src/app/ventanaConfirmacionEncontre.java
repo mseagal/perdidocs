@@ -39,11 +39,11 @@ public class ventanaConfirmacionEncontre extends JFrame implements ActionListene
         
         textoConfirmacion = new JTextArea(" El documento: "
                 + ""+tipoSeleccion+" "
-                + ""+Numero+"\n quedo registrado en"
+                + ""+Numero+"\n quedó registrado en"
                 + " mi base de datos\n"
                 + " por el numero de celular\n"
-                + " "+Telefono+" la persona que lo extravio\n"
-                + " se pondra en contacto para acordar\n la entrega.\n"
+                + " "+Telefono+" la persona que lo extravió\n"
+                + " se pondrá en contacto para acordar\n la entrega.\n"
                 + " Muchas gracias por ayudar");
         textoConfirmacion.setBounds(5, 130, 245, 130);
         textoConfirmacion.setFont(new Font("Arial",3,12));

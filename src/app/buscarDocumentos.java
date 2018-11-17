@@ -23,7 +23,9 @@ public class buscarDocumentos extends JFrame implements ActionListener, ItemList
     public static String SeleccionTipo = "";
     public static String NumDocumento = "";
     public static String NumTelefono = "";
+    public static String TipoDocBD;
     public static int TipoDoc;
+    public static boolean estado=false;
     
     public String gettel(){
         
@@ -143,12 +145,17 @@ public class buscarDocumentos extends JFrame implements ActionListener, ItemList
             } catch (SQLException ex) {
                 
             }
+            
+            if(estado==true){
             ventanaConfirmacionBusqueda venConbus = new ventanaConfirmacionBusqueda();
             venConbus.setBounds(0, 0, 262, 415);
             venConbus.setVisible(true);
             venConbus.setResizable(false);
             venConbus.setLocationRelativeTo(null);
-            
+            }
+            else{
+            JOptionPane.showMessageDialog(null,"El Documento no existe en la base de datos");
+            }
            
             
             
@@ -162,15 +169,19 @@ public class buscarDocumentos extends JFrame implements ActionListener, ItemList
             
         Connection con=DriverManager.getConnection(url,"root","");
         Statement sta=con.createStatement();
-        String sql="select * from documento where numero='"+NumDocumento+"' and tipo_tipo_doc="+TipoDoc+"";
+        String sql="SELECT tipo_doc.nombre as tipo,documento.numero,documento.contacto, documento.fecha from documento "
+                + "inner join tipo_doc "
+                + "on documento.tipo_tipo_doc=tipo_doc.codigo "
+                + "where numero='"+NumDocumento+"' and tipo_tipo_doc="+TipoDoc+"";
         
         ResultSet resultado=sta.executeQuery(sql);
         
-        
+            
         while(resultado.next()){
-           
+            
             NumTelefono=resultado.getString("contacto");
-              
+            TipoDocBD=resultado.getString("tipo");
+            estado=true;
         }
         
         
@@ -188,7 +199,7 @@ public class buscarDocumentos extends JFrame implements ActionListener, ItemList
         ventanaBusDoc.setVisible(true);
         ventanaBusDoc.setResizable(false);
         ventanaBusDoc.setLocationRelativeTo(null);
-        System.out.println(NumTelefono);
+        
         
     }    
 

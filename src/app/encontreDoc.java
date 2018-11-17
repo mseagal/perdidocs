@@ -151,7 +151,10 @@ public class encontreDoc extends JFrame implements ActionListener, ItemListener 
         if (EventoClic1.getSource()== botonRegistrar){
             NumDoc = boxDocumento.getText().trim();
             NumTel = boxTelefono.getText().trim();
-            
+            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+            Date date=new Date();
+            String fc=dateFormat.format(date);
+            fecha=fc;
             try {
                 conexionBD();
             } catch (SQLException ex) {
@@ -193,7 +196,8 @@ public class encontreDoc extends JFrame implements ActionListener, ItemListener 
     
     } 
     catch(SQLException ex){
-        JOptionPane.showMessageDialog(null,"Error de conexion. Revise los datos");
+        JOptionPane.showMessageDialog(null,"Revise los datos ingresados");
+        System.out.println(ex);
         
     }
     
@@ -204,10 +208,11 @@ public class encontreDoc extends JFrame implements ActionListener, ItemListener 
         ventanaEncontreDocs.setVisible(true);
         ventanaEncontreDocs.setResizable(false);
         ventanaEncontreDocs.setLocationRelativeTo(null); 
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        /*DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
         Date date=new Date();
         String fc=dateFormat.format(date);
-        fecha=fc;
+        fecha=fc;*/
+        
         
         
         
