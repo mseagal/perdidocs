@@ -24,7 +24,7 @@ public class buscarDocumentos extends JFrame implements ActionListener, ItemList
     public static String NumDocumento = "";
     public static String NumTelefono = "";
     public static String TipoDocBD;
-    public static int TipoDoc;
+    public static int TipoDoc=0;
     public static boolean estado=false;
     
     public String gettel(){
@@ -156,6 +156,8 @@ public class buscarDocumentos extends JFrame implements ActionListener, ItemList
             else{
             JOptionPane.showMessageDialog(null,"El Documento no existe en la base de datos");
             }
+            estado=false;
+            TipoDoc=0;
            
             
             

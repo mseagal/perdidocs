@@ -143,6 +143,10 @@ public class encontreDoc extends JFrame implements ActionListener, ItemListener 
             
             TipoDoc=4;
         }
+        if(Seleccion.equals("")){    
+            
+            TipoDoc=0;
+        }
     }
     
     
